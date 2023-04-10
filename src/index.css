@@ -12,7 +12,7 @@
 
 /* Estilos para el track (fondo) de la barra de desplazamiento */
 .textcal::-webkit-scrollbar-track {
-  background-color: #f1f1f1; /* Color de fondo del track */
+  background-color: #f1f1f100; /* Color de fondo del track */
 }
 
 /* Estilos para el thumb (agarradera) de la barra de desplazamiento */

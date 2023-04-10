@@ -28,13 +28,15 @@ function App () {
       })
       setOpText('0')
     } else if (value === 'CL') {
-      if (opText.length === 1) {
+      if (opText.length === 1 || opText === 'Infinity') {
         setOpText('0')
       } else {
         setOpText(opText.slice(0, opText.length - 1))
       }
     } else if (innerHTML === '±') {
-      if (opText !== '0') {
+      if (opText === 'Infinity') {
+        setOpText(opText)
+      } else if (opText !== '0') {
         if (opText[0] !== '-') {
           setOpText('-' + opText)
         } else {
@@ -42,7 +44,7 @@ function App () {
         }
       }
     } else {
-      if (opText === '0') {
+      if (opText === '0' || opText === 'Infinity') {
         setOpText(innerHTML)
       } else {
         setOpText(opText + innerHTML)
@@ -52,6 +54,9 @@ function App () {
 
   const handleSimbol: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const { innerHTML } = e.currentTarget
+    if (opText === 'Infinity') {
+      return
+    }
     if (opText === '0' && operation.num1 === null) {
       return
     }
